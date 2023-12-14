@@ -1,439 +1,537 @@
 
-import  {  
-	RgbClass,
-	FacePartClass
-		} from './JudgeFaceDomainClass.js';
+import { RgbClass, FacePartClass } from './JudgeFaceDomainClass.js';
 
-
+/**
+ * Represents a class for judging facial features based on personal color.
+ *
+ * @class
+ */
 class JudgeFaceClass {
-
-	constructor(	//cavas_image_data,
-			randmark_positions,
-			width,
-			height,
-			//randmark_part_db,
-			scope_db,
-			)
-	{ 
-
+	/**
+	 * Creates an instance of JudgeFaceClass.
+	 *
+	 * @constructor
+	 * @param {Object[]} randmark_positions - An array of landmark positions.
+	 * @param {number} width - The width of the image.
+	 * @param {number} height - The height of the image.
+	 * @param {Object} scope_db - The database containing scope information.
+	 */
+	constructor(randmark_positions, width, height, scope_db) {
 		//this.cavas_image_data = cavas_image_data
-		this.randmark_positions = randmark_positions
+		this.randmark_positions = randmark_positions;
 		//this.randmark_part_db = randmark_part_db
 		this.scope_db = scope_db;
-		this.width = width
-		this.height = height
+		this.width = width;
+		this.height = height;
 
 		this.part_class = {};
-		this.personal_scores = {}
-		
+		this.personal_scores = {};
+
 		this.part_id = "";
-
-
 	}
 
-	judge_personal_color(part_id, factory){
-
+	/**
+	 * Judges personal color for a specific facial part.
+	 *
+	 * @param {string} part_id - The ID of the facial part.
+	 * @param {Object} factory - The factory object for creating facial parts.
+	 */
+	judge_personal_color(part_id, factory) {
 		this.part_id = part_id;
 
 		this.part_class = factory.get_part(this.part_id);
 
 		let judge = new JudgeByRatioClass(this.part_class, this.scope_db[this.part_id]);
 		this.personal_scores[this.part_id] = judge.get_scores();
-
 	}
 
-
-	get_judge_score(part){
-
-		return this.personal_scores[part]
+	/**
+	 * Gets the judge score for a specific facial part.
+	 *
+	 * @param {string} part - The ID of the facial part.
+	 * @returns {number} The judge score for the specified facial part.
+	 */
+	get_judge_score(part) {
+		return this.personal_scores[part];
 	}
 
-	get_judge_result(part){
-
+	/**
+	 * Gets the judge result for a specific facial part.
+	 *
+	 * @param {string} part - The ID of the facial part.
+	 * @returns {string} The judge result for the specified facial part.
+	 */
+	get_judge_result(part) {
 		let result_season = "";
 		let max_val = 0;
 
-		let hash = this.personal_scores[part]
+		let hash = this.personal_scores[part];
 		for (let key in hash) {
 			if (hash[key] > max_val) {
-				result_season  = key;
-				max_val = hash[key] ;
+				result_season = key;
+				max_val = hash[key];
 			}
 		}
 
-		return  result_season;
+		return result_season;
 	}
-
-
 }
-;
 
-
-function Out_debug(msg){
-
-	let Flag = false
+/**
+ * Outputs debug messages to the console.
+ *
+ * @param {string} msg - The debug message.
+ */
+function Out_debug(msg) {
+	let Flag = false;
 	if (Flag) {
-		console.log(msg)
+		console.log(msg);
 	}
 }
 
-let  Judge_pos = [];		
-class PartFactory{
+let Judge_pos = [];
 
-	//static judge_pos = [];		
+/**
+ * Represents a factory class for creating facial parts.
+ *
+ * @class
+ */
+class PartFactory {
+	//static judge_pos = [];
 
-	constructor(cavas_image_data2d, randmark_positions, randmark_part_db, judge_ct = 1) { 
-
+	/**
+	 * Creates an instance of PartFactory.
+	 *
+	 * @constructor
+	 * @param {Object} cavas_image_data2d - 2D array representing the image data.
+	 * @param {Object[]} randmark_positions - An array of landmark positions.
+	 * @param {Object} randmark_part_db - The database containing information about facial parts.
+	 * @param {number} judge_ct - The judge count.
+	 */
+	constructor(cavas_image_data2d, randmark_positions, randmark_part_db, judge_ct = 1) {
 		this.cavas_image_data2d = cavas_image_data2d;
 		this.randmark_positions = randmark_positions;
-		
+
 		this.randmark_part_db = randmark_part_db;
 
 		this.parts = {};
 
 		this.Judge_ct = judge_ct;
 		this.part_id = "";
-
 	}
 
-	static clear_judge_positions(){
+	/**
+	 * Clears the judge positions.
+	 *
+	 * @static
+	 */
+	static clear_judge_positions() {
 		//return PartFactory.judge_pos
-		Judge_pos = []
+		Judge_pos = [];
 	}
 
-	static get_judge_positions(){
+	/**
+	 * Gets the judge positions.
+	 *
+	 * @static
+	 * @returns {Object[]} An array of judge positions.
+	 */
+	static get_judge_positions() {
 		//return PartFactory.judge_pos
-		return Judge_pos
+		return Judge_pos;
 	}
 
-	static add_positions(pos){
-
+	/**
+	 * Adds positions to the judge positions.
+	 *
+	 * @static
+	 * @param {Object} pos - The position to be added.
+	 */
+	static add_positions(pos) {
 		//PartFactory.judge_pos.push(pos)
-		Judge_pos.push(pos)
+		Judge_pos.push(pos);
 	}
 
-	get_part(part_id){
-
+	/**
+	 * Gets a facial part based on the part ID.
+	 *
+	 * @param {string} part_id - The ID of the facial part.
+	 * @returns {Object} The created facial part.
+	 */
+	get_part(part_id) {
 		this.part_id = part_id;
 		this._create_parts();
-		return this.parts[this.part_id]; 
+		return this.parts[this.part_id];
 	}
 
-	_create_parts(){
-		//hoho
+	/**
+	 * Creates facial parts based on landmark positions and image data.
+	 *
+	 * @private
+	 */
+	_create_parts() {
+
 		let part_rgbs = this._get_part_rgbs();
-		this.parts[this.part_id] = new FacePartClass(this.part_id, part_rgbs );
+		this.parts[this.part_id] = new FacePartClass(this.part_id, part_rgbs);
 	}
 
-
-	_get_center_position(){
-	
-		//////from randmarks and canvas_image_data 
-		//const hoho_x = (positions[30]["_x"] + (positions[14]["_x"] - positions[30]["_x"]) / 2 ) ;
-
+	/**
+	 * Gets the center position for creating facial parts.
+	 *
+	 * @private
+	 * @returns {Object} The center position.
+	 */
+	_get_center_position() {
 		const pos_from = this.randmark_part_db[this.part_id]["from"] - 1;
-		const pos_to   = this.randmark_part_db[this.part_id]["to"] - 1;
+		const pos_to = this.randmark_part_db[this.part_id]["to"] - 1;
 
 		let s_x = this.randmark_positions[pos_from]["_x"];
 		let s_y = this.randmark_positions[pos_from]["_y"];
 		let e_x = this.randmark_positions[pos_to]["_x"];
-		let x = parseInt((s_x +  (e_x - s_x) / 2) );
-		//const hoho_y = positions[30]["_y"] ;
-		let y = parseInt(s_y );
+		let x = parseInt(s_x + (e_x - s_x) / 2);
+		let y = parseInt(s_y);
 
-		//const imageData = canvasCtx.getImageData(hoho_x, hoho_y,  1, 1 );
-		//const data      = imageData.data; // rgba、1バイト×4のデータ
-		//  r:1 g:1 b:1 			5 1
-		Out_debug("<hoho position for judge>")
-		Out_debug("x:" + x + " y:" + y)
-		Out_debug("<converted canvas>")
-		Out_debug(this.cavas_image_data2d)
-		///////////////////////////////////////////////////
-
-		return {"x":x, "y":y}
-	
+		return { "x": x, "y": y };
 	}
 
-	_push_rgb_to_list(RgbClasss, part_rgb){
-		RgbClasss.push( new RgbClass(part_rgb.r, part_rgb.g, part_rgb.b))
+	/**
+	 * Pushes RGB values to the RGB class list.
+	 *
+	 * @private
+	 * @param {Object[]} RgbClasss - The list of RGB classes.
+	 * @param {Object} part_rgb - The RGB values.
+	 */
+	_push_rgb_to_list(RgbClasss, part_rgb) {
+		RgbClasss.push(new RgbClass(part_rgb.r, part_rgb.g, part_rgb.b));
 	}
 
-
-	_get_part_rgbs(){
-
-		let cp = this._get_center_position()
-
+	/**
+	 * Gets RGB values for creating facial parts.
+	 *
+	 * @private
+	 * @returns {Object[]} The list of RGB values.
+	 */
+	_get_part_rgbs() {
+		let cp = this._get_center_position();
 		let RgbClasss = [];
-		this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x][cp.y])
-		PartFactory.add_positions({"x":cp.x, "y":cp.y});
 
-		for (let i = 1; i <= this.Judge_ct ; i++){
-			this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x + i][cp.y])
-			PartFactory.add_positions({"x":cp.x + i , "y":cp.y});
+		this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x][cp.y]);
+		PartFactory.add_positions({ "x": cp.x, "y": cp.y });
+
+		for (let i = 1; i <= this.Judge_ct; i++) {
+			this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x + i][cp.y]);
+			PartFactory.add_positions({ "x": cp.x + i, "y": cp.y });
 		}
 
-		for (let i = 1; i <= this.Judge_ct; i++){
-			this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x - i][cp.y])
-			PartFactory.add_positions({"x":cp.x -  i , "y":cp.y});
+		for (let i = 1; i <= this.Judge_ct; i++) {
+			this._push_rgb_to_list(RgbClasss, this.cavas_image_data2d[cp.x - i][cp.y]);
+			PartFactory.add_positions({ "x": cp.x - i, "y": cp.y });
 		}
 
-			// cavas_image_data2d[0][1] 
-			// 	{"r":1, "g":2, "b":3} 
-			// cavas_image_data2d[1][1]
-			// 	{"r":1, "g":2, "b":3} 
-
-		//////////////////////////////////////////////////////
-		Out_debug("<rgb of part>")
-		Out_debug(RgbClasss)
-		//////////////////////////////////////////////////////
-		Out_debug("<rgb of part>")
-
-		return  RgbClasss
-		//let hoho_rgbs = [new RgbClass(42, 32, 43), new RgbClass(12, 12, 13)];
-
+		return RgbClasss;
 	}
-
-	
 }
 
+/**
+ * Represents a factory class for creating facial parts with three positions.
+ *
+ * @class
+ * @extends PartFactory
+ */
+class ThreePosFactory extends PartFactory {
+	/**
+	 * Gets the center position for creating facial parts with three positions.
+	 *
+	 * @private
+	 * @returns {Object} The center position.
+	 */
+	_get_center_position() {
+		const pos_top = this.randmark_part_db[this.part_id]["top"] - 1;
+		const pos_down = this.randmark_part_db[this.part_id]["down"] - 1;
+		const pos_right = this.randmark_part_db[this.part_id]["right"] - 1;
 
-class ThreePosFactory extends PartFactory{
+		let t_x = this.randmark_positions[pos_top]["_x"];
+		let t_y = this.randmark_positions[pos_top]["_y"];
+		let d_x = this.randmark_positions[pos_down]["_x"];
+		let d_y = this.randmark_positions[pos_down]["_y"];
+		let r_x = this.randmark_positions[pos_right]["_x"];
+		let r_y = this.randmark_positions[pos_right]["_y"];
 
-	_get_center_position(){
-	
-		const pos_top    = this.randmark_part_db[this.part_id]["top"]   - 1;
-		const pos_down   = this.randmark_part_db[this.part_id]["down"]  - 1;
-		const pos_right  = this.randmark_part_db[this.part_id]["right"] - 1;
+		let x = parseInt(((t_x + d_x + r_x) / 3));
+		let y = parseInt(((t_y + d_y + r_y) / 3));
 
-		let t_x = this.randmark_positions[pos_top   ]["_x"];
-		let t_y = this.randmark_positions[pos_top   ]["_y"];
-		let d_x = this.randmark_positions[pos_down  ]["_x"];
-		let d_y = this.randmark_positions[pos_down  ]["_y"];
-		let r_x = this.randmark_positions[pos_right ]["_x"];
-		let r_y = this.randmark_positions[pos_right ]["_y"];
-		
-		let x = parseInt(((t_x + d_x + r_x) / 3) );
-		let y = parseInt(((t_y + d_y + r_y) / 3) );
-
-		return {"x":x, "y":y}
+		return { "x": x, "y": y };
 	}
-
 }
 
+/**
+ * Represents a factory class for creating facial parts with four positions.
+ *
+ * @class
+ * @extends PartFactory
+ */
+class FourPosFactory extends PartFactory {
+	/**
+	 * Gets the center position for creating facial parts with four positions.
+	 *
+	 * @private
+	 * @returns {Object} The center position.
+	 */
+	_get_center_position() {
+		const left_top = this.randmark_part_db[this.part_id]["left_top"] - 1;
+		const left_down = this.randmark_part_db[this.part_id]["left_down"] - 1;
+		const right_top = this.randmark_part_db[this.part_id]["right_top"] - 1;
+		const right_down = this.randmark_part_db[this.part_id]["right_down"] - 1;
 
-class FourPosFactory extends PartFactory{
+		let p1 = {
+			"x": this.randmark_positions[left_down]["_x"],
+			"y": this.randmark_positions[left_down]["_y"]
+		}
 
-	_get_center_position(){
-	
-		const left_top    = this.randmark_part_db[this.part_id]["left_top"]   - 1;
-		const left_down   = this.randmark_part_db[this.part_id]["left_down"]  - 1;
-		const right_top   = this.randmark_part_db[this.part_id]["right_top"] - 1;
-		const right_down  = this.randmark_part_db[this.part_id]["right_down"] - 1;
+		let p2 = {
+			"x": this.randmark_positions[right_down]["_x"],
+			"y": this.randmark_positions[right_down]["_y"]
+		}
 
-		//p1
-		let p1    = {
-			"x":this.randmark_positions[left_down   ]["_x"],
-			"y":this.randmark_positions[left_down   ]["_y"]
-			}
-
-		//p2
-		let p2   = {
-			"x":this.randmark_positions[right_down   ]["_x"],
-			"y":this.randmark_positions[right_down   ]["_y"]
-			}
-
-		//p3
 		let p3 = {
-			"x":this.randmark_positions[right_top ]["_x"],
-			"y":this.randmark_positions[right_top ]["_y"]
-			}
+			"x": this.randmark_positions[right_top]["_x"],
+			"y": this.randmark_positions[right_top]["_y"]
+		}
 
-		//p4
 		let p4 = {
-			"x":this.randmark_positions[left_top  ]["_x"],
-			"y":this.randmark_positions[left_top  ]["_y"]
-			}
+			"x": this.randmark_positions[left_top]["_x"],
+			"y": this.randmark_positions[left_top]["_y"]
+		}
 
 		let s1 = (p4.x - p2.x) * (p1.y - p2.y) - (p4.y - p2.y) * (p1.x - p2.x)
 		let s2 = (p4.x - p2.x) * (p2.y - p3.y) - (p4.y - p2.y) * (p3.x - p3.x)
-		
+
 		let x = parseInt(p1.x + (p3.x - p1.x) * s1 / (s1 + s2));
 		let y = parseInt(p1.y + (p3.y - p1.y) * s1 / (s1 + s2));
 
-		return {"x":x, "y":y}
+		return { "x": x, "y": y };
 	}
-
 }
 
-
+/**
+ * Represents a class for judging personal color based on facial features.
+ *
+ * @class
+ * @extends JudgePersonalColorClass
+ */
 class JudgePersonalColorClass {
-	constructor(arg_part, part_scope_db) { 
-		this.part = arg_part
+	/**
+	 * Creates an instance of JudgePersonalColorClass.
+	 *
+	 * @constructor
+	 * @param {Object} arg_part - The facial part.
+	 * @param {Object} part_scope_db - The database containing scope information for the facial part.
+	 */
+	constructor(arg_part, part_scope_db) {
+		this.part = arg_part;
 
 		//part_scope_db["sp"][0]["min"]["r"]
-		this.scope_db = part_scope_db 
+		this.scope_db = part_scope_db;
 	}
 
-	get_scores() { 
+	/**
+	 * Gets the personal color scores based on the facial part.
+	 *
+	 * @returns {Object} The personal color scores.
+	 */
+	get_scores() {
 		let Personal_color_scores = this._calc_personal_color();
 		//output image
 		//{"sp":1, "sm":2, "au":3, "wi":4};
 		return Personal_color_scores;
 	}
 
-	_calc_personal_color(){
+	/**
+	 * Calculates the personal color scores.
+	 *
+	 * @private 
+	 */
+	_calc_personal_color() {
 		let part_rgbs = this.part.get_rgbs();
 
-		//base scope error check
+		// Base scope error check
 		let sp_score = 0;
 		let sm_score = 0;
-		let au_score = 0; 
+		let au_score = 0;
 		let wi_score = 0;
 
-		Out_debug("<scolpe for judge>")
-		Out_debug(this.scope_db)
-		Out_debug("<rgb for judge>")
-		Out_debug(part_rgbs)
+		Out_debug("<scolpe for judge>");
+		Out_debug(this.scope_db);
+		Out_debug("<rgb for judge>");
+		Out_debug(part_rgbs);
 
-		for (let part_rgb of part_rgbs){
-			sp_score = sp_score + this._compare_rgb(part_rgb, this.scope_db["sp"])
-			sm_score = sm_score + this._compare_rgb(part_rgb, this.scope_db["sm"])
-			au_score = au_score + this._compare_rgb(part_rgb, this.scope_db["au"])
-			wi_score = wi_score + this._compare_rgb(part_rgb, this.scope_db["wi"])
+		for (let part_rgb of part_rgbs) {
+			sp_score = sp_score + this._compare_rgb(part_rgb, this.scope_db["sp"]);
+			sm_score = sm_score + this._compare_rgb(part_rgb, this.scope_db["sm"]);
+			au_score = au_score + this._compare_rgb(part_rgb, this.scope_db["au"]);
+			wi_score = wi_score + this._compare_rgb(part_rgb, this.scope_db["wi"]);
 		}
 
-		return {"sp":sp_score, "sm":sm_score, "au":au_score, "wi":wi_score };
+		return { "sp": sp_score, "sm": sm_score, "au": au_score, "wi": wi_score };
 	}
 
-	_compare_rgb(part_rgb, scope_rgb){
-	
+	/**
+	 * Compares RGB values with the scope RGB values.
+	 *
+	 * @private
+	 * @param {Object} part_rgb - The RGB values of the facial part.
+	 * @param {Object[]} scope_rgb - The scope RGB values for comparison.
+	 * @returns {number} The comparison score.
+	 */
+	_compare_rgb(part_rgb, scope_rgb) {
 		let score = 0;
 		const hit_score = 10;
 
-		if ((part_rgb.r <= scope_rgb[0]["max"].r) && (part_rgb.r >= scope_rgb[0]["min"].r) &&
-      		   (part_rgb.g <=  scope_rgb[0]["max"].g) && (part_rgb.g >= scope_rgb[0]["min"].g) &&
-		   (part_rgb.b <=  scope_rgb[0]["max"].b) && (part_rgb.b >= scope_rgb[0]["min"].b)) {
-		   
-		   score = hit_score;
+		if (
+			part_rgb.r <= scope_rgb[0]["max"].r &&
+			part_rgb.r >= scope_rgb[0]["min"].r &&
+			part_rgb.g <= scope_rgb[0]["max"].g &&
+			part_rgb.g >= scope_rgb[0]["min"].g &&
+			part_rgb.b <= scope_rgb[0]["max"].b &&
+			part_rgb.b >= scope_rgb[0]["min"].b
+		) {
+			score = hit_score;
 		}
 
 		return score;
 	}
-
-
-
 }
 
+/**
+ * Represents a class for judging personal color based on facial features with ratio comparison.
+ *
+ * @class
+ * @extends JudgePersonalColorClass
+ */
 class JudgeByRatioClass extends JudgePersonalColorClass {
-	_compare_rgb(part_rgb, scope_rgb){
-	
+	/**
+	 * Compares RGB values with the scope RGB values using a ratio comparison.
+	 *
+	 * @private
+	 * @param {Object} part_rgb - The RGB values of the facial part.
+	 * @param {Object[]} scope_rgb - The scope RGB values for comparison.
+	 * @returns {number} The comparison score.
+	 */
+	_compare_rgb(part_rgb, scope_rgb) {
 		let score = 0;
 		const hit_score = 10;
-		const g = part_rgb.g
-		//const b = part_rgb.b
+		const g = part_rgb.g;
 
-		if ((part_rgb.r/g <= scope_rgb[0]["max"].r) && (part_rgb.r/g >= scope_rgb[0]["min"].r)) {
-		//if ((part_rgb.r/b <= scope_rgb[0]["max"].r) && (part_rgb.r/b >= scope_rgb[0]["min"].r) &&
-      		 //   (part_rgb.g/b <= scope_rgb[0]["max"].g) && (part_rgb.g/b >= scope_rgb[0]["min"].g) ) {
-		   
-		   score = hit_score;
+		if (part_rgb.r / g <= scope_rgb[0]["max"].r && part_rgb.r / g >= scope_rgb[0]["min"].r) {
+			score = hit_score;
 		}
 
 		return score;
 	}
-
 }
 
+/**
+ * Represents a class for judging personal color based on facial features with HSB comparison.
+ *
+ * @class
+ * @extends JudgePersonalColorClass
+ */
 class JudgeByHsbClass extends JudgePersonalColorClass {
-
-	_compare_rgb(part_rgb, scope_Hsb){
-	
+	/**
+	 * Compares RGB values with the scope HSB values.
+	 *
+	 * @private
+	 * @param {Object} part_rgb - The RGB values of the facial part.
+	 * @param {Object[]} scope_Hsb - The scope HSB values for comparison.
+	 * @returns {number} The comparison score.
+	 */
+	_compare_rgb(part_rgb, scope_Hsb) {
 		let score = 0;
 		const hit_score = 10;
-		const g = part_rgb.g
-		//const b = part_rgb.b
+		const g = part_rgb.g;
 
-		if ((part_rgb.r/g <= scope_rgb[0]["max"].r) && (part_rgb.r/g >= scope_rgb[0]["min"].r)) {
-		//if ((part_rgb.r/b <= scope_rgb[0]["max"].r) && (part_rgb.r/b >= scope_rgb[0]["min"].r) &&
-      		 //   (part_rgb.g/b <= scope_rgb[0]["max"].g) && (part_rgb.g/b >= scope_rgb[0]["min"].g) ) {
-		   
-		   score = hit_score;
+		if (part_rgb.r / g <= scope_rgb[0]["max"].r && part_rgb.r / g >= scope_rgb[0]["min"].r) {
+			score = hit_score;
 		}
 
 		return score;
 	}
 
-	_rgb2hsv ( rgb ) {
-		var r = rgb[0] / 255 ;
-		var g = rgb[1] / 255 ;
-		var b = rgb[2] / 255 ;
+	/**
+	 * Converts RGB values to HSB values.
+	 *
+	 * @private
+	 * @param {number[]} rgb - The RGB values.
+	 * @returns {number[]} The HSB values.
+	 */
+	_rgb2hsv(rgb) {
+		var r = rgb[0] / 255;
+		var g = rgb[1] / 255;
+		var b = rgb[2] / 255;
 
-		var max = Math.max( r, g, b ) ;
-		var min = Math.min( r, g, b ) ;
-		var diff = max - min ;
+		var max = Math.max(r, g, b);
+		var min = Math.min(r, g, b);
+		var diff = max - min;
 
-		var h = 0 ;
+		var h = 0;
 
-		switch( min ) {
-			case max :
-				h = 0 ;
-			break ;
+		switch (min) {
+			case max:
+				h = 0;
+				break;
 
-			case r :
-				h = (60 * ((b - g) / diff)) + 180 ;
-			break ;
+			case r:
+				h = (60 * ((b - g) / diff)) + 180;
+				break;
 
-			case g :
-				h = (60 * ((r - b) / diff)) + 300 ;
-			break ;
+			case g:
+				h = (60 * ((r - b) / diff)) + 300;
+				break;
 
-			case b :
-				h = (60 * ((g - r) / diff)) + 60 ;
-			break ;
+			case b:
+				h = (60 * ((g - r) / diff)) + 60;
+				break;
 		}
 
-		var s = max == 0 ? 0 : diff / max ;
-		var v = max ;
+		var s = max == 0 ? 0 : diff / max;
+		var v = max;
 
-		return [ h, s, v ] ;
+		return [h, s, v];
 	}
 }
 
-
-;
-
-
-
-function convers_image_to_2d(image_data, width, height){
-	//1690500
-	//var image_data2d = JSON.parse(JSON.stringify((new Array(1000)).fill((new Array(1000)).fill(0))));
-	//image_data2d[1][1] =  {"r":1, "g":1, "b":1 }
-	let image_data2d = JSON.parse(JSON.stringify((new Array(width)).fill((new Array(height)).fill(0))));
-	let i=0;
+/**
+ * Converts image data to a 2D array.
+ *
+ * @param {number[]} image_data - The image data array.
+ * @param {number} width - The width of the image.
+ * @param {number} height - The height of the image.
+ * @returns {Object} The 2D array representing the image data.
+ */
+function convers_image_to_2d(image_data, width, height) {
+	let image_data2d = JSON.parse(JSON.stringify(new Array(width).fill(new Array(height).fill(0))));
+	let i = 0;
 	for (var y = 0; y < height; ++y) {
 		for (var x = 0; x < width; ++x) {
-			image_data2d[x][y] = {  "r":image_data[i], 
-						"g":image_data[i+1],
-						"b":image_data[i+2]
-						}
-			i = i+4;
-		};
-	};
-
+			image_data2d[x][y] = {
+				"r": image_data[i],
+				"g": image_data[i + 1],
+				"b": image_data[i + 2]
+			};
+			i = i + 4;
+		}
+	}
 	return image_data2d;
 }
 
-
-
-
-export {  
-		Out_debug,
-		JudgeFaceClass,
-		JudgePersonalColorClass,
-		JudgeByRatioClass,
-		PartFactory,
-		ThreePosFactory,
-		FourPosFactory,
-		convers_image_to_2d
-}
-;
+export {
+	Out_debug,
+	JudgeFaceClass,
+	JudgePersonalColorClass,
+	JudgeByRatioClass,
+	JudgeByHsbClass,
+	PartFactory,
+	ThreePosFactory,
+	FourPosFactory,
+	convers_image_to_2d
+};
