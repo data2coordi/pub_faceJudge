@@ -71,12 +71,9 @@ class JudgeFaceStateClass {
   +to_selected(): void
 }
 
-```
 
 
 
-```mermaid
-classDiagram
 
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
