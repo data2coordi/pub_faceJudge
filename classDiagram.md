@@ -58,6 +58,7 @@ class JudgeFaceStateClass {
   +to_selected(): void
 }
 
+```
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
   +get_scores(): object
@@ -80,7 +81,6 @@ class ThreePosFactory {
   +get_part(part_id: string): object
 }
 
-```
 AnalyzeClass --|> FaceApiClass
 FaceApiClass --|> FacePartClass
 FacePartClass --|> FourPosFactory
