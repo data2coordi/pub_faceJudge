@@ -33,35 +33,11 @@ class ThreePosFactory {
 
 ```
 
+
+
+
+
 # Judge
-```mermaid
-classDiagram
-
-class JudgePersonalColorClass {
-  +JudgePersonalColorClass
-
-  (arg_part: object, part_scope_db: object)
-  +get_scores(): object
-}
-
-
-class JudgeByHsbClass {
-  +JudgeByHsbClass()
-  +get_scores(): Object
-}
-
-class JudgeByRatioClass {
-  +JudgeByRatioClass()
-  +get_scores(): Object
-}
-
-
-```
-
-
-
-
-
 
 ```mermaid
 classDiagram
@@ -91,19 +67,39 @@ class JudgeFaceStateClass {
   +to_selected(): void
 }
 
+# Judge Method
+```mermaid
+classDiagram
 
+class JudgePersonalColorClass {
+  +JudgePersonalColorClass
+
+  (arg_part: object, part_scope_db: object)
+  +get_scores(): object
+}
+
+
+class JudgeByHsbClass {
+  +JudgeByHsbClass()
+  +get_scores(): Object
+}
+
+class JudgeByRatioClass {
+  +JudgeByRatioClass()
+  +get_scores(): Object
+}
 
 
 ```
 
 
+
+```
+
+# Face
 ```mermaid
 classDiagram
 
-class AnalyzeClass {
-  +AnalyzeClass()
-  +analyze(faceApiClass: FaceApiClass, start_img: HTMLMediaElement): Promise<void>
-}
 
 class FaceApiClass {
   +FaceApiClass()
@@ -118,11 +114,20 @@ class FacePartClass {
   +get_rgbs(): Array<RgbClass>
 }
 
-class RgbClass {
-  +RgbClass(r: number, g: number, b: number)
-}
 
 ```
 
 
+# Else
+```mermaid
+classDiagram
 
+class AnalyzeClass {
+  +AnalyzeClass()
+  +analyze(faceApiClass: FaceApiClass, start_img: HTMLMediaElement): Promise<void>
+}
+
+class RgbClass {
+  +RgbClass(r: number, g: number, b: number)
+}
+```
