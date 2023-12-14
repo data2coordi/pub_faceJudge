@@ -1,10 +1,10 @@
 
 ```mermaid
+classDiagram
 FourPosFactory --|> PartFactory
 JudgeByHsbClass --|> JudgePersonalColorClass
 JudgeByRatioClass --|> JudgePersonalColorClass
 ThreePosFactory --|> PartFactory
-
 
 ```
 
