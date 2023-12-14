@@ -1,16 +1,11 @@
 
-```mermaid
-classDiagram
-PartFactory <|-- FourPosFactory 
-JudgePersonalColorClass <|-- JudgeByHsbClass 
-JudgePersonalColorClass <|--  JudgeByRatioClass 
-PartFactory <|--  ThreePosFactory 
-
-```
 
 # Factory
 ```mermaid
 classDiagram
+
+PartFactory <|-- FourPosFactory 
+PartFactory <|--  ThreePosFactory 
 
 class PartFactory {
   +PartFactory(cavas_image_data2d: object, randmark_positions: Array<object>, randmark_part_db: object, judge_ct: number)
@@ -71,6 +66,9 @@ class JudgeFaceStateClass {
 # Judge Method
 ```mermaid
 classDiagram
+
+JudgePersonalColorClass <|-- JudgeByHsbClass 
+JudgePersonalColorClass <|--  JudgeByRatioClass 
 
 class JudgePersonalColorClass {
   +JudgePersonalColorClass
