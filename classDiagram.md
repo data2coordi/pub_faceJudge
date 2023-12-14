@@ -2,8 +2,8 @@
 ```mermaid
 FourPosFactory --|> PartFactory
 JudgeByHsbClass --|> JudgePersonalColorClass
-JudgeByRatioClass--|> JudgePersonalColorClass
-ThreePosFactory-->PartFactory
+JudgeByRatioClass --|> JudgePersonalColorClass
+ThreePosFactory -->PartFactory
 
 
 ```
