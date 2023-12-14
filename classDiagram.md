@@ -62,6 +62,8 @@ class JudgeFaceStateClass {
 
 
 ```mermaid
+
+classDiagram
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
   +get_scores(): object
