@@ -50,7 +50,6 @@ class JudgeFaceGuiClass {
   +shutter(): void
 }
 
-```
 class JudgeFaceStateClass {
   +JudgeFaceStateClass(items_tableopt: { Items_table?: any })
   +to_init(): void
@@ -59,6 +58,7 @@ class JudgeFaceStateClass {
   +to_selected(): void
 }
 
+```
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
   +get_scores(): object
