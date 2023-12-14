@@ -70,6 +70,7 @@ class JudgePersonalColorClass {
 
 ```mermaid
 classDiagram
+
 class PartFactory {
   +PartFactory(cavas_image_data2d: object, randmark_positions: Array<object>, randmark_part_db: object, judge_ct: number)
   +get_part(part_id: string): object
@@ -88,6 +89,7 @@ class ThreePosFactory {
 }
 
 ```
+
 AnalyzeClass --|> FaceApiClass
 FaceApiClass --|> FacePartClass
 FacePartClass --|> FourPosFactory
