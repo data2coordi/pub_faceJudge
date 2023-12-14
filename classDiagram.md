@@ -1,10 +1,12 @@
 ```mermaid
 classDiagram
+
 class AnalyzeClass {
   +AnalyzeClass()
   +analyze(faceApiClass: FaceApiClass, start_img: HTMLMediaElement): Promise<void>
 }
 
+```
 class FaceApiClass {
   +FaceApiClass()
   +createCanvasFromMedia(start_img: HTMLMediaElement): HTMLCanvasElement
