@@ -103,6 +103,8 @@ class ThreePosFactory {
 
 
 
+```mermaid
+classDiagram
 AnalyzeClass --|> FaceApiClass
 FaceApiClass --|> FacePartClass
 FacePartClass --|> FourPosFactory
@@ -115,3 +117,4 @@ JudgeFaceClass --|> JudgePersonalColorClass
 JudgeFaceClass --|> PartFactory
 PartFactory --|> RgbClass
 ThreePosFactory --|> PartFactory
+```
