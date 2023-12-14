@@ -66,6 +66,7 @@ class JudgeFaceStateClass {
   +to_result(): void
   +to_selected(): void
 }
+```
 
 # Judge Method
 ```mermaid
