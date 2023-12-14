@@ -68,27 +68,9 @@ class JudgePersonalColorClass {
   +get_scores(): object
 }
 
-```mermaid
-classDiagram
 
-class PartFactory {
-  +PartFactory(cavas_image_data2d: object, randmark_positions: Array<object>, randmark_part_db: object, judge_ct: number)
-  +get_part(part_id: string): object
-  +add_positions(pos: object): void
-  +clear_judge_positions(): void
-  +get_judge_positions(): Array<object>
-}
 
-class RgbClass {
-  +RgbClass(r: number, g: number, b: number)
-}
 
-class ThreePosFactory {
-  +ThreePosFactory()
-  +get_part(part_id: string): object
-}
-
-```
 
 AnalyzeClass --|> FaceApiClass
 FaceApiClass --|> FacePartClass
