@@ -46,6 +46,10 @@ class JudgeFaceClass {
   +judge_personal_color(part_id: string, factory: object): void
 }
 
+```
+
+```mermaid
+classDiagram
 class JudgeFaceGuiClass {
   +JudgeFaceGuiClass()
   +boot_gui(): void
