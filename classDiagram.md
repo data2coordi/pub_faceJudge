@@ -61,15 +61,15 @@ class JudgeFaceStateClass {
 ```
 
 
-```mermaid
 
 classDiagram
+
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
   +get_scores(): object
 }
 
-```
+```mermaid
 class PartFactory {
   +PartFactory(cavas_image_data2d: object, randmark_positions: Array<object>, randmark_part_db: object, judge_ct: number)
   +get_part(part_id: string): object
