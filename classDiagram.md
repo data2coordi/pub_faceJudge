@@ -56,6 +56,13 @@ class JudgeFaceGuiClass {
   +shutter(): void
 }
 
+class JudgeFaceStateClass {
+  +JudgeFaceStateClass(items_tableopt: { Items_table?: any })
+  +to_init(): void
+  +to_photograph(): void
+  +to_result(): void
+  +to_selected(): void
+}
 
 ```
 
