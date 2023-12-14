@@ -1,3 +1,21 @@
+
+```mermaid
+classDiagram
+AnalyzeClass --|> FaceApiClass
+FaceApiClass --|> FacePartClass
+FacePartClass --|> FourPosFactory
+FourPosFactory --|> JudgeByHsbClass
+JudgeByHsbClass --|> JudgeByRatioClass
+JudgeByRatioClass --|> JudgeFaceClass
+JudgeFaceClass --|> JudgeFaceGuiClass
+JudgeFaceClass --|> JudgeFaceStateClass
+JudgeFaceClass --|> JudgePersonalColorClass
+JudgeFaceClass --|> PartFactory
+PartFactory --|> RgbClass
+ThreePosFactory --|> PartFactory
+```
+
+
 ```mermaid
 classDiagram
 
@@ -46,6 +64,10 @@ class JudgeFaceClass {
   +judge_personal_color(part_id: string, factory: object): void
 }
 
+```
+
+```mermaid
+classDiagram
 
 class JudgeFaceGuiClass {
   +JudgeFaceGuiClass()
@@ -56,13 +78,6 @@ class JudgeFaceGuiClass {
   +shutter(): void
 }
 
-
-```
-
-```mermaid
-classDiagram
-
-
 class JudgeFaceStateClass {
   +JudgeFaceStateClass(items_tableopt:  object )
   +to_init(): void
@@ -72,13 +87,17 @@ class JudgeFaceStateClass {
 }
 
 
-
-
-
 class JudgePersonalColorClass {
   +JudgePersonalColorClass(arg_part: object, part_scope_db: object)
   +get_scores(): object
 }
+
+
+```
+
+```mermaid
+classDiagram
+
 
 
 
@@ -103,18 +122,3 @@ class ThreePosFactory {
 
 
 
-```mermaid
-classDiagram
-AnalyzeClass --|> FaceApiClass
-FaceApiClass --|> FacePartClass
-FacePartClass --|> FourPosFactory
-FourPosFactory --|> JudgeByHsbClass
-JudgeByHsbClass --|> JudgeByRatioClass
-JudgeByRatioClass --|> JudgeFaceClass
-JudgeFaceClass --|> JudgeFaceGuiClass
-JudgeFaceClass --|> JudgeFaceStateClass
-JudgeFaceClass --|> JudgePersonalColorClass
-JudgeFaceClass --|> PartFactory
-PartFactory --|> RgbClass
-ThreePosFactory --|> PartFactory
-```
