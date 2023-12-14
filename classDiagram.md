@@ -6,7 +6,6 @@ class AnalyzeClass {
   +analyze(faceApiClass: FaceApiClass, start_img: HTMLMediaElement): Promise<void>
 }
 
-```
 class FaceApiClass {
   +FaceApiClass()
   +createCanvasFromMedia(start_img: HTMLMediaElement): HTMLCanvasElement
@@ -51,6 +50,7 @@ class JudgeFaceGuiClass {
   +shutter(): void
 }
 
+```
 class JudgeFaceStateClass {
   +JudgeFaceStateClass(items_tableopt: { Items_table?: any })
   +to_init(): void
