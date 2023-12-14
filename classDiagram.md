@@ -50,7 +50,6 @@ class JudgeFaceGuiClass {
   +shutter(): void
 }
 
-```
 class JudgeFaceStateClass {
   +JudgeFaceStateClass(items_tableopt: { Items_table?: any })
   +to_init(): void
@@ -81,6 +80,7 @@ class ThreePosFactory {
   +get_part(part_id: string): object
 }
 
+```
 AnalyzeClass --|> FaceApiClass
 FaceApiClass --|> FacePartClass
 FacePartClass --|> FourPosFactory
