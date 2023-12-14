@@ -64,7 +64,7 @@ classDiagram
 
 
 class JudgeFaceStateClass {
-  +JudgeFaceStateClass(items_tableopt: { Items_table: object })
+  +JudgeFaceStateClass(items_tableopt:  object )
   +to_init(): void
   +to_photograph(): void
   +to_result(): void
