@@ -1,18 +1,12 @@
 
 ```mermaid
-classDiagram
-AnalyzeClass --|> FaceApiClass
-FaceApiClass --|> FacePartClass
-FacePartClass --|> FourPosFactory
-FourPosFactory --|> JudgeByHsbClass
-JudgeByHsbClass --|> JudgeByRatioClass
-JudgeByRatioClass --|> JudgeFaceClass
-JudgeFaceClass --|> JudgeFaceGuiClass
-JudgeFaceClass --|> JudgeFaceStateClass
-JudgeFaceClass --|> JudgePersonalColorClass
-JudgeFaceClass --|> PartFactory
-PartFactory --|> RgbClass
-ThreePosFactory --|> PartFactory
+FourPosFactory --|> PartFactory
+JudgeByHsbClass --|> JudgePersonalColorClass
+JudgeByRatioClass--|> JudgePersonalColorClass
+JudgePersonalColorClass --|> 
+ThreePosFactory-->PartFactory
+
+
 ```
 
 
