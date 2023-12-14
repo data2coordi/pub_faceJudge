@@ -3,7 +3,7 @@
 FourPosFactory --|> PartFactory
 JudgeByHsbClass --|> JudgePersonalColorClass
 JudgeByRatioClass --|> JudgePersonalColorClass
-ThreePosFactory -->PartFactory
+ThreePosFactory --|> PartFactory
 
 
 ```
