@@ -1,0 +1,40 @@
+
+
+#chmod -R 777 wp-content
+#docker exec -it wordpress_wordpress_1 sh -c "apt-get update && apt-get install -y vim"
+
+#apt-get install -y wget
+#apt-get install -y mariadb
+#apt-get install -y subversion
+
+#wget https://phar.phpunit.de/phpunit-7.0.phar 
+#chmod +x phpunit-7.0.phar 
+#mv phpunit-7.0.phar /usr/local/bin/phpunit 
+#phpunit --version 
+ 
+#curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
+#chmod +x wp-cli.phar 
+#mv wp-cli.phar /usr/local/bin/wp 
+
+#--------------------------------------------
+###jest
+#docker build -t makeup_test .
+#docker run -d -it -v /home/a/wordpress/wp-content/faceJudge:/src --name faceJudge_test makeup_test
+#docker container start faceJudge_test
+#docker container stop faceJudge_test
+docker exec -it faceJudge_test bash
+#npm init
+#npm install --save-dev jest
+#./node_modules/.bin/jest --init
+# jsdomを選ぶこと
+
+# exportを使えるようにする
+#npm install --save-dev babel-jest @babel/core @babel/preset-env
+#npm install --save-dev @babel/plugin-transform-modules-commonjs
+# babel.config.js を作成する
+
+
+
+
+
+

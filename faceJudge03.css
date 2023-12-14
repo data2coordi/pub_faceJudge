@@ -1,0 +1,126 @@
+@charset "utf-8";
+#start_img
+{
+	position : absolute ;
+	left :0px;
+  	top : 0px;
+  	width : 640px;
+  	height : auto;
+	z-index: 2;
+}
+#base_img
+{
+	position : absolute ;
+	left :0px;
+  	top : 0px;
+  	width : 640px;
+  	height :auto;
+	z-index: 3;	
+}
+#result_img
+{
+	position : absolute ;
+	left :0px;
+  	top : 0px;
+  	width : 640px;
+  	height :auto;
+	z-index: 4;	
+}
+#base_img_base
+{
+	position : absolute ;
+	left : 0px ;
+	top : 0px ;
+	width : 640px ;
+	height : 960px ;
+	z-index : 100 ;
+}
+#base_img_up
+{
+	position : absolute ;
+	left : 216px ;
+	top : 865px ;
+	width : 264px ;
+	height : 69px ;
+	z-index : 103 ;
+}
+ #base_img_photo
+{
+	position : absolute ;
+	left : 146px ;
+	top : 865px ;
+	width : 198px ;
+	height : 69px ;
+	z-index : 101 ;
+}
+ #base_img_back
+{
+	position : absolute ;
+	left : 352px;
+	top : 865px;
+	width : 198px;
+	height : 69px;
+	z-index : 102 ;
+}
+
+#picture
+{
+	position : absolute ;
+	left :0px;
+  	top : 0px;
+/*  	width :640px;
+  	height :auto;
+	*/
+	z-index: 5;	
+}
+
+#video
+{
+	position : absolute ;
+	width: 133%;
+	height: 133%;
+	object-fit: fill;
+	z-index: 5;	
+}
+
+
+#prepare
+{
+	position : absolute ;
+	left : 262px;
+	top : 865px;
+	z-index: 130;
+}
+
+
+#analyze
+{
+	position : absolute ;
+	left : 352px;
+	top : 865px;
+	z-index: 140;
+}
+
+
+#shutter
+{
+	position : absolute ;
+	left : 452px;
+	top : 865px;
+	z-index: 140;
+}
+
+
+#selectedFile
+{
+	position : absolute ;
+	left : 100px;
+  	top : 865px;
+	z-index: 140;
+}
+label input {
+    display: none;
+}
+
+
+
