@@ -75,7 +75,7 @@ ChatGPT3.5でも概ね同じような結果であったが、ChatGPT3.5は継承
 
 
 ## JSDOC
-***[JSDOC形式のドキュメンテーション](https://data2coordi.github.io/pub_makeup/jsdoc_document/index.html)***
+***[JSDOC形式のドキュメンテーション](https://data2coordi.github.io/pub_faceJudge/jsdoc_document/index.html)***
 
 上記リンク先のJSDOCのドキュメントもChatGPT3.5を活用して作成した。
 JavascriptのコードにJSDOCコメント付与をChatGPT3.5に指示してJSDOCコメント付きJavascriptコードを作成。
