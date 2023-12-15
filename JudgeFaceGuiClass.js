@@ -1,4 +1,14 @@
 
+let Items_table = {
+	"all":       ["start_img",  "selectedFile_label", "photograph", "picture", "shutter", "video", "back", "analyze", "result_img"  ],
+	"init":      ["start_img",  "selectedFile_label", "photograph","picture" ],	
+//	"photograph":["video",	    "shutter", "picture" ],	
+	"photograph":["video",	    "shutter"  ],	
+	"selected":  ["start_img",  "back", "analyze"],	
+	"result":    ["result_img", "back", ]
+}	
+
+
 /**
  * Represents the state of the JudgeFaceClass GUI.
  *
@@ -104,16 +114,26 @@ class JudgeFaceGuiClass {
 	 *
 	 * @static
 	 * @param {string} id - The identifier.
-	 * @param {string} result_hoho - The result for hoho.
-	 * @param {object} result_hoho_score - The scores for hoho.
+	 * @param {string} result - The result for hoho.
+	 * @param {object} result_score - The scores for hoho.
 	 */
-	static display_result(id, result_hoho, result_hoho_score) {
+	static display_result(id, result, result_score) {
+		id=id.replace("hoho", "頬の")
+		id=id.replace("rip", "唇の")
+		id=id.replace("eye_white", "白目部分の")
+		id=id.replace("eye_black", "黒目部分の")
+		result = result.replace("sp", "【春】")
+		result = result.replace("sm", "【夏】")
+		result = result.replace("au", "【秋】")
+		result = result.replace("wi", "【冬】")
+
+		if (result.length == 0) {result="【特徴なし】"}
 		let msg = "<br>--------------------<br>" + id;
-		msg = msg + '結果は' + result_hoho + 'です<br>';
-		msg = msg + "<br>sp:" + result_hoho_score["sp"];
-		msg = msg + "<br>sm:" + result_hoho_score["sm"];
-		msg = msg + "<br>au:" + result_hoho_score["au"];
-		msg = msg + "<br>wi:" + result_hoho_score["wi"];
+		msg = msg + '結果は' + result + 'です<br>';
+		msg = msg + "<br>sp:" + result_score["sp"];
+		msg = msg + "<br>sm:" + result_score["sm"];
+		msg = msg + "<br>au:" + result_score["au"];
+		msg = msg + "<br>wi:" + result_score["wi"];
 
 		document.getElementById('msg').innerHTML = document.getElementById('msg').innerHTML + msg;
 
