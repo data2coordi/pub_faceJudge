@@ -122,11 +122,11 @@ class JudgeFaceGuiClass {
 		id=id.replace("rip", "唇の")
 		id=id.replace("eye_white", "白目部分の")
 		id=id.replace("eye_black", "黒目部分の")
-		result = result.replace("", "全て同等")
-		result = result.replace("sp", "春")
-		result = result.replace("sm", "夏")
-		result = result.replace("au", "秋")
-		result = result.replace("wi", "冬")
+		result = result.replace("sp", "【春】")
+		result = result.replace("sm", "【夏】"】)
+		result = result.replace("au", "【秋】")
+		result = result.replace("wi", "【冬】")
+		result = result.replace("", "【特徴なし】")
 		let msg = "<br>--------------------<br>" + id;
 		msg = msg + '結果は' + result + 'です<br>';
 		msg = msg + "<br>sp:" + result_score["sp"];
