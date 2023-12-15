@@ -1,4 +1,14 @@
 
+let Items_table = {
+	"all":       ["start_img",  "selectedFile_label", "photograph", "picture", "shutter", "video", "back", "analyze", "result_img"  ],
+	"init":      ["start_img",  "selectedFile_label", "photograph","picture" ],	
+//	"photograph":["video",	    "shutter", "picture" ],	
+	"photograph":["video",	    "shutter"  ],	
+	"selected":  ["start_img",  "back", "analyze"],	
+	"result":    ["result_img", "back", ]
+}	
+
+
 /**
  * Represents the state of the JudgeFaceClass GUI.
  *
@@ -12,14 +22,6 @@ class JudgeFaceStateClass {
 	 * @param {Object} [items_table=Items_table] - The table containing information about visible items.
 	 */
 	constructor(items_table = Items_table) {
-let Items_table = {
-	"all":       ["start_img",  "selectedFile_label", "photograph", "picture", "shutter", "video", "back", "analyze", "result_img"  ],
-	"init":      ["start_img",  "selectedFile_label", "photograph","picture" ],	
-//	"photograph":["video",	    "shutter", "picture" ],	
-	"photograph":["video",	    "shutter"  ],	
-	"selected":  ["start_img",  "back", "analyze"],	
-	"result":    ["result_img", "back", ]
-}	
 		this.items_table = items_table;
 	}
 
