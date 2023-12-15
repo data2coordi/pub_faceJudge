@@ -123,7 +123,7 @@ class JudgeFaceGuiClass {
 		id=id.replace("eye_white", "白目部分の")
 		id=id.replace("eye_black", "黒目部分の")
 		result = result.replace("sp", "【春】")
-		result = result.replace("sm", "【夏】"】)
+		result = result.replace("sm", "【夏】")
 		result = result.replace("au", "【秋】")
 		result = result.replace("wi", "【冬】")
 		result = result.replace("", "【特徴なし】")
