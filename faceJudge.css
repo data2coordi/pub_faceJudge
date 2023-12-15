@@ -35,7 +35,7 @@ start_img {
     z-index: 110;
 }
 
-.text01{
+/*.text01{
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@ start_img {
     margin-top: 110px;
     margin-left: 140px;
     /* z-index: 1000; */
-}
+}*/
 
 
 /*button*/
