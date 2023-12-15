@@ -27,10 +27,16 @@
 
 
 ## アーキテクチャ
-Javascript。
+使用言語はJavascript。
+
+- 機械学習モデルを活用して、写真のランドマークを摘出する。
+- それぞれのマークについてRGBを解析する。
+- 解析したRGBの結果と判別[テーブル](./judge_data.js)を照合し、パーソナルカラーを判別する。
+
 機械学習モデルは公開されているものを活用させていただいている。
 
 活用させていただいた機械学習モデル
+
 [justadudewhohacksさん](https://github.com/justadudewhohacks/face-api.js)
 
 
@@ -77,9 +83,6 @@ GoogleのVertex AIを使って同様の実験を試みた。
 JavascriptのコードにJSDOCコメント付与をAIに指示してJSDOCコメント付きJavascriptコードを作成。
 その後、jsdocコマンドでHTML形式のドキュメントを生成している。
 完全にChatGPT3.5が生成した状態そのままである。
-
-
-
 
 
 
