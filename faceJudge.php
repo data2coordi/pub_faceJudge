@@ -12,9 +12,9 @@
 	<body>
 
 		<!-- image -->
-		<img src="/img/base_start.png" id="base_start" alt=""/>
+		<img src="./img/base_start.png" id="base_start" alt=""/>
 		
-		<img id="start_img" src="/img/start_img.jpg"></img>
+		<img id="start_img" src="./img/start_img.jpg"></img>
 		<p class="text_01" style="
 			position: absolute;
 			top: 0;
