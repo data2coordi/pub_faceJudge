@@ -33,7 +33,7 @@
 		<p><a href="#"><button type="button" id="analyze"><img src="./img/this.png"/></button></a></p>
 		<p><a href="#"><button type="button" id="shutter"><img src="./img/shutter.png"/></button></a></p>
 		<p><a href="#"><button type="button" id="photograph"><img src="./img/photograph.png"/></button></a></p>
-		<p><a href="#"><button type="button" id="back"   ><img src="./img/back.png"/></butt</a></p>on>
+		<p><a href="#"><button type="button" id="back"   ><img src="./img/back.png"/></button></a></p>
 
 		<!-- display  -->
 		<div style="backGround-color: lightblue;position:fixed;top:1000px;left:10px;z-index:1000000;">
