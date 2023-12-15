@@ -15,7 +15,7 @@ a:hover img {
 	z-index: 110;
 }
 
-start_img {
+.start_img {
     position: absolute;
     left: 0px;
     top: 0px;
