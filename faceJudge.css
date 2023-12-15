@@ -4,17 +4,15 @@ a:hover img {
   filter: alpha(opacity=60);
 }
 
-#base_start
-{
-	position : absolute ;
-	left : 0px;
-	top : 0px;
-	width:100%;
-	max-width: 100%;
-	height: auto;
-	z-index: 110;
+#base_start {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 780px;
+    /* max-width: 100%; */
+    height: auto;
+    z-index: 110;
 }
-
 
 /*button*/
 #selectedFile
@@ -123,16 +121,16 @@ a:hover img {
 
 
 /* main image */
-#start_img
-{
-	position : absolute ;
-	left : 0px;
-	top : 0px;
-	width:100%;
-	max-width: 100%;
-	height: auto;
-	z-index: 109;
+#start_img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 780px;
+    max-width: 100%;
+    height: auto;
+    z-index: 109;
 }
+
 #result_summer_blue
 {
 	position : absolute ;
@@ -285,7 +283,7 @@ a:hover img {
 	position : absolute ;
 	left : 0px;
 	top : 0px;
-	width : 640px;
+	width : 720px;
 	height : 960px;
 	z-index: 110;
 }

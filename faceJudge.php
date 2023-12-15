@@ -15,6 +15,17 @@
 		<img src="./img/base_start.png" id="base_start" alt=""/>
 		
 		<img id="start_img" src="./img/start_img.jpg"></img>
+		<p class="text_01" style="
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-size: 16px;
+			color: black;
+			margin-top: 90px;
+			margin-left: 110px;
+			z-index: 900;
+			font-family: sans-serif;
+		">※写真を選択した後、解析まで1分ほどお待ちください</p>
 		<img id="result_img" src=""></img>
 
 		<!-- camera photo -->
