@@ -1,3 +1,12 @@
+下記のjavascriptのクラス情報からmermaid形式のクラス図の継承を作成してください。
+
+
+下記のjavascriptのクラス情報からクラス図の継承関係をmermaid形式で生成してください。
+継承元は下記クラス情報のキーワード"Extends"に記載されています。
+継承関係以外のクラス図は不要なので記載しないでください。
+
+クラス情報：
+
 Class: AnalyzeClass
 AnalyzeClass()
 Represents a class for analyzing facial features and personal color.
