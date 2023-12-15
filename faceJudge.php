@@ -22,9 +22,9 @@
 			font-size: 16px;
 			color: black;
 			margin-top: 90px;
-			margin-left: 120px;
+			margin-left: 110px;
 			z-index: 900;
-			">※写真を選択した後、解析まで1分ほどお待ちください</p>
+		">※写真を選択した後、解析まで1分ほどお待ちください</p>
 		<img id="result_img" src=""></img>
 
 		<!-- camera photo -->
