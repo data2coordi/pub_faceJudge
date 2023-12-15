@@ -9,30 +9,10 @@ a:hover img {
 	position : absolute ;
 	left : 0px;
 	top : 0px;
-	width:100%;
+	width:780px;
 	max-width: 100%;
 	height: auto;
 	z-index: 110;
-}
-
-#start_img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 720px;
-    /* max-width: 100%; */
-    height: auto;
-    z-index: 109;
-}
-
-#base_start {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 720px;
-    /* max-width: 100%; */
-    height: auto;
-    z-index: 110;
 }
 
 /*.text01{
@@ -159,11 +139,12 @@ a:hover img {
 	position : absolute ;
 	left : 0px;
 	top : 0px;
-	width:100%;
+	width:780px;
 	max-width: 100%;
 	height: auto;
 	z-index: 109;
 }
+
 #result_summer_blue
 {
 	position : absolute ;
