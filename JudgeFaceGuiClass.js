@@ -127,7 +127,7 @@ class JudgeFaceGuiClass {
 		result = result.replace("au", "【秋】")
 		result = result.replace("wi", "【冬】")
 
-		if (result.length != 0) {result="【特徴なし】"}
+		if (result.length == 0) {result="【特徴なし】"}
 		let msg = "<br>--------------------<br>" + id;
 		msg = msg + '結果は' + result + 'です<br>';
 		msg = msg + "<br>sp:" + result_score["sp"];
