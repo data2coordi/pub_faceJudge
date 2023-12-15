@@ -113,7 +113,8 @@ class AnalyzeClass {
 	 * @param {HTMLMediaElement} start_img - The media element containing the image to analyze.
 	 */
 	static async analyze(faceApiClass, start_img) {
-		document.getElementById("msg").textContent = "\n分析中\n時間がかかります";
+		//document.getElementById("msg").textContent = "\n分析中\n時間がかかります";
+		document.getElementById("msg").textContent = "\n※※※ 分析結果 ※※※\n";
 
 		let base_canvas = await faceApiClass.createCanvasFromMedia(start_img);
 
