@@ -121,14 +121,14 @@ a:hover img {
 
 
 /* main image */
-#start_img {
+#base_start {
     position: absolute;
     left: 0px;
     top: 0px;
     width: 720px;
     /* max-width: 100%; */
-    height: auto;
-    z-index: 109;
+    height: 1070px;
+    z-index: 110;
 }
 
 #result_summer_blue
