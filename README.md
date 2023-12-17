@@ -9,7 +9,7 @@
 [問診アプリ](https://color.toshidayurika.com/diagnosis/)は作成していたが、ユーザーは写真を写すだけで自動で診断できるレベルを目指すこととなった。
 精度が十分でなくプロトタイプの状態でペンディング中だがポートフォリオ目的に公開することにした。
 
-[自動パーソナルカラー診断アプリ](https://color.toshidayurika.com/2021/04/30/web%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%82%92%e9%96%8b%e7%99%ba%e4%b8%ad/)
+[自動パーソナルカラー診断アプリ](https://color.toshidayurika.com/?page_id=2236)
 
 ※ 直感的に操作できるのでまずは上記リンク先から触ってみてください。
 
@@ -24,7 +24,7 @@
 ## 使用方法
 下記リンク先を参照
 
-[自動パーソナルカラー診断アプリ](https://color.toshidayurika.com/2021/04/30/web%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%82%92%e9%96%8b%e7%99%ba%e4%b8%ad/)
+[自動パーソナルカラー診断アプリ](https://color.toshidayurika.com/?page_id=2236)
 
 
 ## アーキテクチャ
